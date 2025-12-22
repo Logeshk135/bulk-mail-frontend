@@ -40,7 +40,7 @@ function App() {
 
  const Send = () => {
     setstatus(true);
-   axios.post(process.env.BACKEND_URL,{msg:msg,emailList:emailList})
+   axios.post(import.meta.env.VITE_BACKEND_URL, { msg: msg, emailList: emailList })
    .then(function(data)
   {
     if(data.data === true)
