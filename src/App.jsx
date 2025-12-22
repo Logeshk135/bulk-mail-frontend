@@ -40,7 +40,7 @@ function App() {
 
  const Send = () => {
     setstatus(true);
-   axios.post("https://bulk-mail-backend-64aa.onrender.com/sendemail",{msg:msg,emailList:emailList})
+   axios.post("https://bulk-mail-backend-9jsh.onrender.com/sendemail",{msg:msg,emailList:emailList})
    .then(function(data)
   {
     if(data.data === true)
