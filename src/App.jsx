@@ -43,15 +43,13 @@ function App() {
    axios.post(import.meta.env.VITE_BACKEND_URL, { msg: msg, emailList: emailList })
    .then(function(data)
   {
-    if(data.data === true)
-    {
-      alert("Email sent successfully");
-      setstatus(false);
-    }
-    else
-    {
-      alert("Failed");
-    }
+   if (data.data.success === true) {
+  alert("Email sent successfully");
+  setstatus(false);
+} else {
+  alert("Failed");
+}
+
    });
       
   };
