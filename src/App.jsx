@@ -37,22 +37,27 @@ function App() {
 
  }
 
+const API = import.meta.env.VITE_BACKEND_URL;
 
- const Send = () => {
-    setstatus(true);
-   axios.post(import.meta.env.VITE_BACKEND_URL, { msg: msg, emailList: emailList })
-   .then(function(data)
-  {
-   if (data.data.success === true) {
-  alert("Email sent successfully");
-  setstatus(false);
-} else {
-  alert("Failed");
-}
 
-   });
-      
-  };
+const Send = () => {
+  setstatus(true);
+
+axios.post(`${API}/sendemail`, { msg, emailList })
+  .then((res) => {
+    if (res.data.success === true) {
+      alert("Email sent successfully");
+    } else {
+      alert("Failed to send emails");
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+    alert("Error occurred");
+  });
+
+};
+
 
   return (
     <div>
