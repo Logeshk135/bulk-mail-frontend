@@ -43,7 +43,7 @@ const API = import.meta.env.VITE_BACKEND_URL;
 const Send = () => {
   setstatus(true);
 
-axios.post(`${API}/sendemail`, { msg, emailList })
+axios.post(`${API}`, { msg, emailList })
   .then((res) => {
     if (res.data.success === true) {
       alert("Email sent successfully");
