@@ -43,20 +43,22 @@ const API = import.meta.env.VITE_BACKEND_URL;
 const Send = () => {
   setstatus(true);
 
-axios.post(`${API}`, { msg, emailList })
-  .then((res) => {
-    if (res.data.success === true) {
-      alert("Email sent successfully");
-    } else {
-      alert("Failed to send emails");
-    }
-  })
-  .catch((err) => {
-    console.error(err);
-    alert("Error occurred");
-  });
-
+  axios.post(`${API}/sendmail`, { msg, emailList })
+    .then((res) => {
+      if (res.data.success === true) {
+        alert("Email sent successfully");
+      } else {
+        alert("Failed to send emails");
+      }
+      setstatus(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Error occurred");
+      setstatus(false);
+    });
 };
+
 
 
   return (
