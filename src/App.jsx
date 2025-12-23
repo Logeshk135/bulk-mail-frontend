@@ -44,19 +44,20 @@ const Send = () => {
   setstatus(true);
 
   axios.post(`${API}/sendmail`, { msg, emailList })
-    .then((res) => {
-      if (res.data.success === true) {
-        alert("Email sent successfully");
-      } else {
-        alert("Failed to send emails");
-      }
-      setstatus(false);
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("Error occurred");
-      setstatus(false);
-    });
+  .then((res) => {
+    if (res.data.success === true) {
+      alert("Email sent successfully");
+    } else {
+      alert("Failed to send emails");
+    }
+    setstatus(false);
+  })
+  .catch((err) => {
+    console.error(err);
+    alert("Error occurred");
+    setstatus(false);
+  });
+
 };
 
 
@@ -79,7 +80,7 @@ const Send = () => {
           <input type="file" onChange={handlefile} className="border-4 border-dashed  py-4 mt-5 mb-5"/>
         </div>
          <p className='font-bold text-l'>Total Email in the Files:{emailList.length}</p>
-          <button  onClick={Send} className=' bg-blue-950 text-white font-bold px-5 py-2 rounded-md mt-5 mb-5'>{status?"sending...":"Send"}</button>
+          <button onClick={Send} className=' bg-blue-950 text-white font-bold px-5 py-2 rounded-md mt-5 mb-5'>{status?"sending...":"Send"}</button>
       </div>
     </div>
   )
