@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import axios from "axios";
 import * as XLSX from 'xlsx';
 
@@ -7,6 +7,7 @@ function App() {
   const [msg, setMsg] = useState('')
   const [status, setstatus] = useState(false);
   const [emailList, setEmailList] = useState([]);
+  const fileRef = useRef(null);
 
   function handlemsg(event) {
     setMsg(event.target.value)
@@ -46,6 +47,8 @@ function App() {
 
           setMsg("");
           setEmailList([]);
+
+          fileRef.current.value = ""; 
         }
         else {
           alert("Failed");
@@ -69,7 +72,7 @@ function App() {
       <div className='bg-blue-600 flex flex-col items-center text-black px-5 py-3'>
         <textarea onChange={handlemsg} value={msg} className='w-[80%] h-32 py-2 px-3  outline-none bg-white border rounded-md' placeholder='Enter the email text...'></textarea>
         <div>
-          <input type="file" onChange={handlefile} className="border-4 border-dashed  py-4 mt-5 mb-5" />
+          <input type="file" ref={fileRef} onChange={handlefile} className="border-4 border-dashed  py-4 mt-5 mb-5" />
         </div>
         <p className='font-bold text-l'>Total Email in the Files:{emailList.length}</p>
         <button onClick={Send} className=' bg-blue-950 text-white font-bold px-5 py-2 rounded-md mt-5 mb-5'>{status ? "sending..." : "Send"}</button>
