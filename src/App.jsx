@@ -47,6 +47,7 @@ function App() {
     {
       alert("Email sent successfully");
       setstatus(false);
+      window.location.reload(); 
     }
     else
     {
