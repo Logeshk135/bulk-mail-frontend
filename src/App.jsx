@@ -40,7 +40,7 @@ function App() {
 
  const Send = () => {
     setstatus(true);
-    axios.post("https://bulk-mail-backend-1-ix5p.onrender.com/sendemail",{msg:msg,emailList:emailList})
+    axios.post("https://bulk-mail-backend-two.vercel.app/sendemail",{msg:msg,emailList:emailList})
    .then(function(data)
   {
     if(data.data === true)
